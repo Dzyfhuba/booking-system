@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\UserDetail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
@@ -76,6 +77,10 @@ class RegisterController extends Controller
         else {
             $user->assignRole('user');
         }
+        UserDetail::create([
+            'email' => $data['email'],
+            'namalengkap' =>$data['name']
+        ]);
         event(new Registered($user));
         return $user;
     }

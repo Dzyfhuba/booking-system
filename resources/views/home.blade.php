@@ -20,7 +20,8 @@
                     @endrole
                     @role('user')
                         {{ __('You are logged in as '.Auth::user()->name.'!') }}
-                    @endrole
+                        <br><a href="{{ route ('profile') }}">Profile</a>
+                        @endrole
                     @role('admin')
                         {{ __('You are logged in as admin!') }}
                     @endrole
