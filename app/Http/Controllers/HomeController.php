@@ -14,10 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        if (Auth::check()) {
-            $this->middleware('verified');        
-
-        }
+        $this->middleware('verified');
     }
 
     /**

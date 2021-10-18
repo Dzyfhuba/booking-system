@@ -20,15 +20,15 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::post('/provider/register/post', [ProviderController::class, 'register_post'])->name('provider_register');
-Route::get('/provider/register', [ProviderController::class, 'register'])->name('providerRegister');
+Route::post('/provider/register/post', [RegisterController::class, 'register'])->name('provider_register');
+Route::get('/provider/register', [ProviderController::class, 'register']);
 
 Route::group(['middleware' => ['auth', 'verified', 'role:user']], function () {
     Route::get('/user', [function () {
-        return 'asd';
+        return 'aaa';
     }]);
 });
-
-Route::get('/test/dashboard', function () {
-    return view('listLapangan');
-});
+//Dash-Provider
+Route::get('/provider/list', [ProviderController::class, 'list']);
+Route::get('/provider/history', [ProviderController::class, 'history']);
+Route::get('/provider/add', [ProviderController::class, 'add']);
