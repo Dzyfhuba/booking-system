@@ -1,0 +1,141 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+button {
+  border: none;
+  padding: 15px 35px;
+  border-radius: 30px;
+}
+
+.button {
+  border: none;
+  padding: 15px 35px;
+  border-radius: 30px;
+}
+
+.logo-title{
+  cursor: pointer;
+}
+
+.accordion {
+    background-color: #f8f9fa;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    font-weight: 700;
+    border-radius: 10px;
+  }
+  
+  .active, .accordion:hover {
+    background-color: #e6e6ee;
+  }
+  
+  .accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .panel {
+    padding: 0 18px;
+    /* background-color: white; */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+
+  .navbarSampingButton{
+    padding: 15px 30px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 700;
+  }
+  .navbarSampingButton:hover{
+    background-color: #dc3545;
+    color: white;
+  }
+
+  .panel-lapangan{
+    background-color: wheat;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .redButton{
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-weight: bold;
+    /* letter-spacing: 1px; */
+  }
+  .redButton:active{
+    border: none;
+    background-color: #c3434f;
+  }
+
+
+  #tabBooking .redButton{
+    margin-top: 30px;
+    float: right;
+  }
+
+
+  .card-lapangan{
+    background-color: #f8f9fa;
+  }
+  .card-lapangan:hover{
+    background-color: #e6e6e6;
+  }
+
+
+  #navbarSamping{
+    border-right: 1px solid #e6e6e6;
+  }
+
+  input {
+    border-radius: 30px;
+    border: 1px solid grey;
+    padding: 10px 25px;
+}
+
+  .a-link {
+    color: black;
+    text-decoration: none;
+  }
+
+  .a-link:hover {
+    color: #dc3545;
+  }

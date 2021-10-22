@@ -15,6 +15,8 @@
                     @endif
                     @role('provider')
                         {{ __('You are logged in as provider!') }}
+                        <br>
+                        @include('provider.dashboard')
                     @endrole
                     @role('user')
                         {{ __('You are logged in as '.Auth::user()->name.'!') }}

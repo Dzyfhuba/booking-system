@@ -26,4 +26,12 @@ class ProviderController extends Controller
         event(new Registered($user));
         return redirect()->route('home');
     }
+    public function list()
+    {
+        return view('provider.list');
+    }
+    public function history()
+    {
+        return view('provider.history');
+    }
 }
