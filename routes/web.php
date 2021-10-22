@@ -21,7 +21,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::post('/provider/register/post', [RegisterController::class, 'register'])->name('provider_register');
-Route::get('/provider/register', [ProviderController::class, 'register']);
+Route::get('/provider/register', [ProviderController::class, 'register'])->name('provider_register_page');
 
 Route::group(['middleware' => ['auth', 'verified', 'role:user']], function () {
     Route::get('/user', [function () {

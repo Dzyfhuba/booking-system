@@ -70,10 +70,9 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        if (strpos($data["Url"], '/provider')) {
-            $user->assignRole('Provider');
-        }
-        else {
+        if (strpos($data["url"], '/provider')) {
+            $user->assignRole('provider');
+        } else {
             $user->assignRole('user');
         }
         event(new Registered($user));

@@ -9,7 +9,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <title>Register</title>
+    <title>{{ strpos(url()->current(), '/register') ? 'Register | '.config('app.name', 'Laravel') : config('app.name', 'Laravel') }}</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <link href="style.css">
     <style>
@@ -99,7 +100,9 @@
         <div class="col-md-6 d-flex align-items-center justify-content-center" id="regis-right-side">
             <div style="text-align: center;">
                 <h1 style="text-align: center; font-weight: bolder;">Register to DICUP</h1><br><br>
-                <form>
+                <form action='{{ route('register') }}' method="POST">
+                    @csrf
+                    <input type="hidden" name="url" value="{{ url()->current() }}">
                     <div style="text-align: left;" class="mb-3">
                         <table>
                             <tr>
@@ -178,7 +181,7 @@
                     <hr width="30%"><a style="padding: 0px 20px; color: grey;">or</a>
                     <hr width="30%">
                 </div>
-                <p>Futsal field owner <a href="{{ route('providerRegister') }}">Register here</a></p>
+                <p>Futsal field owner <a href="{{ route('provider_register_page') }}">Register here</a></p>
             </div>
         </div>
         </div>

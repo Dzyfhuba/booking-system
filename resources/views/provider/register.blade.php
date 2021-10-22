@@ -71,7 +71,9 @@
                 <a>Daftar sebagai pemilik lapangan</a>
                 <hr>
                 <br><br>
-                <form>
+                <form action='{{ route('provider_register') }}' method="POST">
+                    @csrf
+                    <input type="hidden" name="url" value="{{ url()->current() }}">
                     <div style="text-align: left;" class="mb-5 form-regis-provider">
                         <div class="mb-3">
                             <a>Nama Tempat</a><br>
