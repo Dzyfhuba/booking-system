@@ -24,20 +24,17 @@ Auth::routes(['verify' => true]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::post('/provider/register/post', [RegisterController::class, 'register'])->name('provider_register');
-Route::get('/provider/register', [ProviderController::class, 'register']);
+Route::get('/provider/register', [ProviderController::class, 'register'])->name('provider_register_page');
 
 Route::group(['middleware' => ['auth', 'verified', 'role:user']], function () {
     Route::get('/user', [function () {
         return 'aaa';
     }]);
 });
-//Dash-Provider
+
 Route::get('/provider/list', [ProviderController::class, 'list'])->name('provider.list');
 Route::get('/provider/history', [ProviderController::class, 'history'])->name('provider.history');
 Route::get('/provider/add', [ProviderController::class, 'add'])->name('provider.add');
-
-//
-
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
