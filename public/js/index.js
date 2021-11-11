@@ -12,3 +12,15 @@ for (i = 0; i < acc.length; i++) {
     } 
   });
 }
+
+
+//OPEN NAVBAR 
+function openFullNavbar() {
+  document.getElementById("navbarFullpage").style.width = "100%";
+  document.getElementById("body").style.overflow = "hidden";
+}
+function closeFullNavbar() {
+  document.getElementById("navbarFullpage").style.width = "0%";
+  document.getElementById("body").style.overflow = "auto";
+
+}
