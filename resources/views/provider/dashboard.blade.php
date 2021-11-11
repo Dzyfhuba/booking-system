@@ -6,7 +6,8 @@
     <title>Dicup.in </title>
 </head>
 <body>
+    <a href="{{ route ('profile') }}">Profile</a>
     <a href="/provider/history">Riwayat</a>
-    <a href="/provider/list">List</a>
+    <a href="{{ route ('provider.list') }}">List</a>
 </body>
 </html>
