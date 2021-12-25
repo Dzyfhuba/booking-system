@@ -59,7 +59,7 @@
 
         <div>
             <div class="bg-light p-3" style="text-align: right; border-radius: 20px 20px 0 0;">
-                <!-- <h1 class="fw-bold logo-title" href="">DICUP.in</h1> -->
+                <!-- <h1 class="fw-bold logo-title" href="">BOLABOL.in</h1> -->
                 <a style="background-color: transparent; padding: 5px;" href="{{ route('login') }}"
                     class="a-link">x</a>
             </div>

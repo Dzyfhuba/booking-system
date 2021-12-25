@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserDetail;
+use App\Models\provider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,11 +14,13 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = User::select()->where('email', Auth::user()->email)->first();
+        $user = User::select()->where('email', Auth::user()->email)->first(); 
         $userdetail = UserDetail::select()->where('email', Auth::user()->email)->first();
+        $provider = provider::select()->where('email', Auth::user()->email)->first();
         return view('profile',[
             'user' => $user,
-            'userdetail' => $userdetail
+            'userdetail' => $userdetail,
+            'provider' => $provider
         ]);
     }
     public function save(Request $request){
@@ -42,6 +45,26 @@ class ProfileController extends Controller
             'nohp'=>$request->nohp,
             'fotoktp'=>$request->email.'.'.$ext
         ]);
+        User::where('email', $request->email)->update([
+            'name' =>$request->namalengkap,
+            'email' => $request->email
+        ]);
         return redirect()->back();
+    }
+
+
+    public function save_provider(Request $request){
+        User::where('email', $request->email)->update([
+            'name' =>$request->nama_tempat,
+            'email' => $request->email
+        ]);
+        provider::where('email', $request->email)->update([
+            'nama_tempat' => $request->nama_tempat,
+            'email' => $request->email,
+            'nohp' => $request->nohp,
+            'alamat' => $request-> alamat,
+        ]);
+        return redirect()->back();
+
     }
 }

@@ -39,9 +39,6 @@
             border: none;
         }
 
-
-
-
         .form-regis-provider input {
             margin-top: 5px;
         }
@@ -71,23 +68,23 @@
                 <a>Daftar sebagai pemilik lapangan</a>
                 <hr>
                 <br><br>
-                <form action='{{ route('provider_register') }}' method="POST">
+                <form action='{{ route('register') }}' method="POST">
                     @csrf
                     <input type="hidden" name="url" value="{{ url()->current() }}">
                     <div style="text-align: left;" class="mb-5 form-regis-provider">
                         <div class="mb-3">
                             <a>Nama Tempat</a><br>
-                            <input type="text" name="nama-tempat">
+                            <input type="text" name="name">
                         </div>
                         <div class="mb-3">
                             <a>Alamat Lengkap</a><br>
-                            <input type="text" name="alamat-tempat">
+                            <input type="text" name="alamat">
                         </div>
 
                         <div class="mb-3">
                             <a>Bukti Kepemilikan Tempat (PBB)</a><br>
                             <input type="file" style="border:none; padding-left: 0px; border-radius: 0px;"
-                                name="bukti-tempat">
+                                name="bukti_kepemilikan">
                         </div>
 
                         <div class="mb-3">
@@ -117,7 +114,7 @@
                         </div>
                         <div class="mb-3">
                             <a>Nomor HP</a><br>
-                            <input type="text" name="nomor-hp">
+                            <input type="text" name="nohp">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-danger w-100 py-3 fw-bold mb-5" style="border-radius: 30px;">

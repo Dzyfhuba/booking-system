@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>{{ strpos(url()->current(), '/login') ? 'Login | '.config('app.name', 'Laravel') : config('app.name', 'Laravel') }}</title>
+    <title>
+        {{ strpos(url()->current(), '/login') ? 'Login | ' . config('app.name', 'Laravel') : config('app.name', 'Laravel') }}
+    </title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <style>
@@ -15,7 +17,13 @@
                 display: none;
             }
         }
-
+        .logoName{
+            text-decoration: none;
+            color:black;
+        }
+        .logoName:hover{
+            color: black;
+        }
     </style>
 </head>
 
@@ -23,7 +31,7 @@
     <section class=" row">
         <div class="col-md-6 d-flex align-items-center justify-content-center" style="height: 100vh;">
             <div style="text-align: center;">
-                <h1 style="text-align: center; font-weight: bolder">Login to DICUP</h1><br><br>
+                <h1 style="text-align: center; font-weight: bolder">Login to BOLABOL</h1><br><br>
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -72,7 +80,9 @@
         <div class="col-md-6 bg-warning" id="login-right-side">
             <section class="justify-content-center align-items-center" style="height: 100vh; display: flex;">
                 <div style="text-align: center;">
-                    <h1 class="fw-bolder">DICUP</h1>
+                    <a href="{{ route('home') }}" class="logoName" style="cursor: pointer">
+                        <h1 class="fw-bolder">BOLABOL</h1>
+                    </a>
                     <p>Booking futsal field online</p>
                 </div>
         </div>

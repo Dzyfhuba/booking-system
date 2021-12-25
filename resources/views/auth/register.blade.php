@@ -9,11 +9,21 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <title>{{ strpos(url()->current(), '/register') ? 'Register | '.config('app.name', 'Laravel') : config('app.name', 'Laravel') }}</title>
+    <title>
+        {{ strpos(url()->current(), '/register') ? 'Register | ' . config('app.name', 'Laravel') : config('app.name', 'Laravel') }}
+    </title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <link href="style.css">
     <style>
+        .logoName{
+            text-decoration: none;
+            color:black;
+        }
+        .logoName:hover{
+            color: black;
+        }
+
         @media screen and (max-width: 700px) {
             #regis-left-side {
                 display: none;
@@ -93,13 +103,15 @@
         <div class="col-md-6 bg-warning" id="regis-left-side">
             <section class="justify-content-center align-items-center" style="height: 100vh; display: flex;">
                 <div style="text-align: center;">
-                    <h1 class="fw-bolder">DICUP</h1>
+                    <a href="{{ route('home') }}" class="logoName" style="cursor: pointer">
+                        <h1 class="fw-bolder">BOLABOL</h1>
+                    </a>
                     <p>Booking futsal field online</p>
                 </div>
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-center" id="regis-right-side">
             <div style="text-align: center;">
-                <h1 style="text-align: center; font-weight: bolder;">Register to DICUP</h1><br><br>
+                <h1 style="text-align: center; font-weight: bolder;">Register to BOLABOL</h1><br><br>
                 <form action='{{ route('register') }}' method="POST">
                     @csrf
                     <input type="hidden" name="url" value="{{ url()->current() }}">
@@ -111,9 +123,8 @@
                             </tr>
                             <tr>
                                 <td><a>Email </a></td>
-                                <td><input id="email" type="email"
-                                        class="@error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email"></td>
+                                <td><input id="email" type="email" class="@error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email') }}" required autocomplete="email"></td>
                             </tr>
                             @error('email')
                                 <tr>
@@ -127,8 +138,8 @@
                             @enderror
                             <tr>
                                 <td><a>Password </a></td>
-                                <td><input type="password" class="@error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password"></td>
+                                <td><input type="password" class="@error('password') is-invalid @enderror"
+                                        name="password" required autocomplete="new-password"></td>
                             </tr>
                             @error('password')
                                 <tr>
@@ -143,12 +154,12 @@
 
                             <tr>
                                 <td><a>Confirm<br>Password </a></td>
-                                <td><input id="password-confirm" type="password"
-                                        name="password_confirmation" required autocomplete="new-password"></td>
+                                <td><input id="password-confirm" type="password" name="password_confirmation" required
+                                        autocomplete="new-password"></td>
                             </tr>
                             <tr>
                                 <td><a>Nomor HP </a></td>
-                                <td><input type="text" name="nomor"></td>
+                                <td><input type="text" name="nohp"></td>
                             </tr>
                             <tr>
                                 <td><a>Alamat </a></td>
@@ -156,7 +167,7 @@
                             </tr>
                             <tr>
                                 <td><a>Tanggal Lahir </a>&emsp;</td>
-                                <td><input type="date" name="tanggal"></td>
+                                <td><input type="date" name="ttl"></td>
                             </tr>
                             <tr id="regis-user-gender">
                                 <td><a>Jenis Kelamin </a></td>

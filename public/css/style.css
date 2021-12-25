@@ -23,6 +23,10 @@
   background: grey;
 }
 
+button:hover{
+  background-color: #d3d3d3;
+}
+
 .hoverRed:hover {
   background-color: #dc3545;
   color: white;
@@ -73,7 +77,7 @@ button {
   background-color: #e6e6ee;
 }
 
-.accordion:after {
+/* .accordion:after {
   content: '\002B';
   color: #777;
   font-weight: bold;
@@ -83,7 +87,7 @@ button {
 
 .active:after {
   content: "\2212";
-}
+} */
 
 .panel {
   padding: 0 18px;
@@ -158,6 +162,9 @@ input {
 }
 
 .a-link:hover {
+  color: #dc3545;
+}
+.a-linkactive {
   color: #dc3545;
 }
 

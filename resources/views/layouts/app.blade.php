@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Bolabol') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <!-- Scripts -->
@@ -42,34 +42,80 @@
             color: white;
         }
 
+        a {
+            text-decoration: none !important;
+            color: black;
+        }
+
     </style>
 </head>
 
-<body class="container-fluid" id="body">
+<body class="container-fluid bg-white" id="body">
     <section class="row">
 
-        <!-- NAVBAR SAMPING/HALAMAN KIRI -->
-        <div class="col-md-2 container" id="navbarSamping">
+        {{-- <!-- NAVBAR SAMPING/HALAMAN KIRI --> --}}
+        <div class="col-md-2 container bg-light" id="navbarSamping">
             <div class="logo-web py-md-5 p-3">
                 <h1 class="fw-bolder"><a href="{{ url('/') }}">{{ config('app.name', 'Bolabol') }}</a></h1>
             </div>
-            <div class="menu-samping">
-                <h5 class="navbarSampingButton{{ strpos(url()->current(), '/') ? ' button-active-red' : '' }}"
-                    id="home-button">Home</h5>
-                <h5 class="navbarSampingButton">Tagihan</h5>
-                <h5 class="navbarSampingButton">Riwayat</h5>
-            </div>
+            @role('user')
+                <div class="menu-samping">
+                    <a href="{{ route('home') }}" style="color: black;">
+                        <h5 class="navbarSampingButton{{ Route::currentRouteName() == 'home' ? ' button-active-red' : '' }}"
+                            id="home-button">Home</h5>
+                    </a>
+                    <a href="{{ route('user.pembayaran') }}">
+                        <h5 class="navbarSampingButton {{ strpos(url()->current(), '/my/pembayaran') ? ' button-active-red' : '' }}">Pembayaran</h5>
+                    </a>
+                    <a href="{{ route('user.riwayat') }}">
+                        <h5 class="navbarSampingButton {{ strpos(url()->current(), '/my/riwayat') ? ' button-active-red' : '' }}">Riwayat</h5>
+                    </a>
+                </div>
+            @endrole
+            @role('provider')
+                <div class="menu-samping">
+                    <a href="{{ route('home') }}" style="color: black;">
+                        <h5 class="navbarSampingButton{{ Route::currentRouteName() == 'home' ? ' button-active-red' : '' }}"
+                            id="home-button">Home</h5>
+                    </a>
+                    <h5 class="navbarSampingButton">Tagihan</h5>
+                    <h5 class="navbarSampingButton">Riwayat</h5>
+                </div>
+            @endrole
+            @role('admin')
+                <div class="menu-samping">
+                    <a href="{{ route('home') }}" style="color: black;">
+                        <h5 class="navbarSampingButton{{ Route::currentRouteName() == 'home' ? ' button-active-red' : '' }}"
+                            id="home-button">Home</h5>
+                    </a>
+                    <a href="{{ route('manajemen-akun') }}">
+                        <h5
+                            class="navbarSampingButton {{ strpos(url()->current(), '/manajemen-akun') ? ' button-active-red' : '' }}">
+                            Manajemen Akun</h5>
+                    </a>
+                    <a href="{{ route('tiket') }}">
+                        <h5
+                            class="navbarSampingButton {{ strpos(url()->current(), '/tiket') ? ' button-active-red' : '' }}">
+                            Tiket</h5>
+                    </a>
+                    <a href="{{ route('riwayat') }}">
+                        <h5
+                            class="navbarSampingButton {{ strpos(url()->current(), '/riwayat') ? ' button-active-red' : '' }}">
+                            Riwayat</h5>
+                    </a>
+                </div>
+            @endrole
             <div class="menu-burger m-3">
                 <h4 onclick="openFullNavbar()" class="a-link">&#9776;</h4>
             </div>
 
         </div>
-        <!-- HALAMAN KANAN  -->
+        {{-- <!-- HALAMAN KANAN  --> --}}
         <div class="col-md-10" style="height: 100vh;" id="bodyMain">
-            <!-- NAVBAR ATAS  -->
+            {{-- <!-- NAVBAR ATAS  --> --}}
             <div class="row align-items-center p-3 navbar-atas">
                 <div class="col-sm-8">
-                    <div class="row">
+                    {{-- <div class="row">
                         <h2 class="fw-bold col-sm-7"></h2>
                         <div class="col-sm-5 p-0">
                             <div class="input-group p-1" id="searchLapangan">
@@ -79,13 +125,12 @@
                                     name="search-lapangan">
                             </div>
                         </div>
-
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="col-sm-4 float-end col-menu-profil">
                     <div class=" float-end ">
-                        <!-- Authentication Links -->
+                        {{-- <!-- Authentication Links --> --}}
                         @guest
                             <div class="d-flex">
                                 @if (Route::has('login'))
@@ -104,10 +149,12 @@
                             </div>
 
                         @else
-                            <div class="navbarSampingButton menu-profile d-flex align-items-center">
+                            <div class="navbarSampingButton menu-profile d-flex align-items-center{{ strpos(url()->current(), '/profile') ? ' button-active-red' : '' }}"
+                                onclick="location.href='{{ route('profile') }}'">
                                 <div class="me-3"
                                     style="height: 40px; width: 40px; border-radius: 50%; overflow-y: hidden;">
-                                    <img src="img/profile-1.jpg" style="height: 100%; width: 100%; object-fit: cover;">
+                                    <img src="{{ asset('img/profile-1.jpg') }}"
+                                        style="height: 100%; width: 100%; object-fit: cover;">
                                 </div>
                                 <div>
                                     <a>{{ Auth::user()->name }}</a><br>
@@ -118,7 +165,7 @@
                 </div>
             </div>
 
-            <!-- ISI LAMAN BODY  -->
+            {{-- <!-- ISI LAMAN BODY  --> --}}
             <div class="container-fluid overflow-auto" id="bodyLaman">
                 <div class="row py-xxl-5 py-sm-4">
                     @yield('content')
@@ -127,20 +174,63 @@
         </div>
     </section>
 
+
+
+    {{-- Navbar --}}
     <div class="" id="navbarFullpage">
         <button onclick="closeFullNavbar()" class="redButton">X</button>
         <div class="menu-samping">
-            <h5 class="navbarSampingButton{{ strpos(url()->current(), '/') ? ' button-active-red' : '' }}">Home</h5>
-            <h5 class="navbarSampingButton">Tagihan</h5>
-            <h5 class="navbarSampingButton">Riwayat</h5>
-            <h5 class="navbarSampingButton">Profile</h5>
+            @role('user')
+                <a href="{{ route('home') }}">
+                    <h5
+                        class="navbarSampingButton {{ Route::currentRouteName() == 'home' ? ' button-active-red' : '' }}">
+                        Home</h5>
+                </a>
+                <h5 class="navbarSampingButton">Tagihan</h5>
+                <h5 class="navbarSampingButton">Riwayat</h5>
+                <a href="{{ route('profile') }}">
+                    <h5
+                        class="navbarSampingButton {{ strpos(url()->current(), '/profile') ? ' button-active-red' : '' }}">
+                        Profile</h5>
+                </a>
+            @endrole
+
+            @role('provider')
+
+                <a href="{{ route('home') }}" style="color: black;">
+                    <h5 class="navbarSampingButton{{ Route::currentRouteName() == 'home' ? ' button-active-red' : '' }}"
+                        id="home-button">Home</h5>
+                </a>
+                <h5 class="navbarSampingButton">Tagihan</h5>
+                <h5 class="navbarSampingButton">Riwayat</h5>
+
+            @endrole
+            @role('admin')
+
+                <a href="{{ route('home') }}" style="color: black;">
+                    <h5 class="navbarSampingButton{{ Route::currentRouteName() == 'home' ? ' button-active-red' : '' }}"
+                        id="home-button">Home</h5>
+                </a>
+                <a href="{{ route('manajemen-akun') }}">
+                    <h5 class="navbarSampingButton {{ Route::currentRouteName() == 'manajemen-akun' ? ' button-active-red' : '' }}"">Manajemen Akun</h5>
+                                    </a>
+                                    <a href=" {{ route('tiket') }}">
+                        <h5
+                            class="navbarSampingButton {{ strpos(url()->current(), '/tiket') ? ' button-active-red' : '' }}">
+                            Tiket</h5>
+                </a>
+                <a href="{{ route('riwayat') }}">
+                    <h5
+                        class="navbarSampingButton {{ strpos(url()->current(), '/riwayat') ? ' button-active-red' : '' }}">
+                        Riwayat</h5>
+                </a>
+            @endrole
         </div>
-    </div>
 
-    <script src="{{ asset('js/index.js') }}"></script>
-    <script>
+        <script src="{{ asset('js/index.js') }}"></script>
+        <script>
 
-    </script>
+        </script>
 </body>
 
 
