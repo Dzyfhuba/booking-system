@@ -1,0 +1,3 @@
+    $lapangan = DB::select('select l.id, l.nama_lapangan, jl.jenis_lapangan, l.luas_lapangan, l.tarif_perjam from lapangan l, jenis_lapangan jl 
+    where l.jenis_lapangan = jl.id 
+    and where l.id_provider = ?', [$sessid]);

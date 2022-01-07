@@ -16,6 +16,7 @@ class CreateUserDetailsTable extends Migration
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
             $table->string('email');
+            $table->string('nik')->nullable();
             $table->string('namalengkap')->nullable();
             $table->string('alamat')->nullable();
             $table->string('ttl')->nullable();
