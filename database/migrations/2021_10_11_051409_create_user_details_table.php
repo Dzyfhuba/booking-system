@@ -21,7 +21,6 @@ class CreateUserDetailsTable extends Migration
             $table->string('alamat')->nullable();
             $table->string('ttl')->nullable();
             $table->string('nohp')->nullable();
-            $table->string('fotoktp')->nullable();
             $table->timestamps();
         });
     }

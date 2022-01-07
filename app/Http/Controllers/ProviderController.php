@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JLapangan;
 use App\Models\Lapangan as ModelsLapangan;
+use App\Models\provider;
 use App\Models\User;
 use App\Models\UserDetail;
 use Illuminate\Auth\Events\Registered;
@@ -32,10 +33,13 @@ class ProviderController extends Controller
     public function register_post(Request $request)
     {
         $data = $request;
-        $user = User::create([
-            'name' => $data['name'],
+        $user = provider::create([
+            'nama_tempat' => $data['nama_tempat'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'nohp' => $data['nohp'],
+            'alamat' => $data['alamat'],
+            'bukti_kepemilikan' => ['bukti_kepemilikan']
         ]);
 
         $user->assignRole('provider');

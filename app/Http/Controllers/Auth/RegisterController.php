@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\provider;
 use App\Models\UserDetail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -71,16 +72,26 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        if (strpos($data["Url"], '/provider')) {
-            $user->assignRole('Provider');
-        }
-        else {
+        if (strpos($data["url"], '/provider')) {
+            provider::create([
+                'nama_tempat' => $data['name'],
+                'email' => $data['email'],
+                'nohp' => $data['nohp'],
+                'alamat' => $data['alamat'],
+                'bukti_kepemilikan' => $data['bukti_kepemilikan']
+            ]);
+            $user->assignRole('provider');
+        } else {
+            UserDetail::create([
+                'email' => $data['email'],
+                'namalengkap' => $data['name'],
+                'alamat' => $data['alamat'],
+                'ttl' => $data['ttl'],
+                'nohp' => $data['nohp'],
+            ]);
             $user->assignRole('user');
+
         }
-        UserDetail::create([
-            'email' => $data['email'],
-            'namalengkap' =>$data['name']
-        ]);
         event(new Registered($user));
         return $user;
     }

@@ -9,7 +9,7 @@ class UserDetail extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nik',
+        'namalengkap',
         'email',
         'namalengkap',
         'alamat',
