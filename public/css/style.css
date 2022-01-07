@@ -1,0 +1,272 @@
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+button:hover{
+  background-color: #d3d3d3;
+}
+
+.hoverRed:hover {
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  border: none;
+  padding: 15px 35px;
+  border-radius: 30px;
+}
+
+.button-active-red {
+  background-color: #dc3545;
+  color: white;
+}
+
+.button {
+  border: none;
+  padding: 15px 35px;
+  border-radius: 30px;
+}
+
+.logo-title {
+  cursor: pointer;
+}
+
+.accordion {
+  background-color: #f8f9fa;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.active, .accordion:hover {
+  background-color: #e6e6ee;
+}
+
+/* .accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+} */
+
+.panel {
+  padding: 0 18px;
+  /* background-color: white; */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.navbarSampingButton {
+  padding: 15px 30px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+.navbarSampingButtonActive, .btn-red-bg, .navbarSampingButton:hover {
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+}
+
+.panel-lapangan {
+  background-color: wheat;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.redButton {
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: bold;
+  /* letter-spacing: 1px; */
+}
+
+.redButton:active, .btn-red-bg:hover {
+  border: none;
+  background-color: #c3434f;
+}
+
+#tabBooking .redButton {
+  margin-top: 30px;
+  float: right;
+}
+
+.card-lapangan {
+  background-color: #f8f9fa;
+  border-radius: 20px;
+}
+
+.card-lapangan:hover {
+  background-color: #e6e6e6;
+}
+
+#navbarSamping {
+  /* border-right: 1px solid #e6e6e6; */
+}
+
+input {
+  border-radius: 30px;
+  border: 1px solid grey;
+  padding: 10px 25px;
+}
+
+.a-link {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.a-link:hover {
+  color: #dc3545;
+}
+.a-linkactive {
+  color: #dc3545;
+}
+
+/* ................. */
+
+/* DASHBOARD */
+
+/* ................. */
+
+#bodyLaman {
+  height: 90%;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+  #bodyLaman {
+    height: auto;
+  }
+  #navbarSamping {
+    /* position: fixed;
+    top: 0px;
+    left: 0px; */
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+  }
+  #navbarSamping .menu-samping {
+    display: none;
+  }
+  #navbarSamping .logo-web {
+    text-align: left;
+  }
+  #navbarSamping .menu-burger {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #navbarSamping .menu-samping {
+    display: none;
+  }
+  .navbar-atas .col-menu-profil {
+    display: none;
+  }
+}
+
+#navbarSamping {
+  overflow-x: hidden;
+}
+
+.menu-burger {
+  display: none;
+}
+
+#navbarFullpage {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 0%;
+  background-color: white;
+  height: 100%;
+  overflow-x: hidden;
+  transition: 0.3s;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+#navbarFullpage button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#searchLapangan {
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1px solid #d3d3d3;
+  width: 100%;
+}
+
+#searchLapangan input {
+  border: none;
+  background-color: transparent;
+  border-radius: 30px;
+}
+
+.menu-profile {
+  border-radius: 30px;
+  padding: 5px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.menu-profile:hover {
+  background-color: #dc3545;
+  color: white;
+}
